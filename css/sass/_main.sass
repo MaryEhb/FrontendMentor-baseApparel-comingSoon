@@ -1,0 +1,192 @@
+*, *::after, *::before
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+    outline: none
+
+body
+    font-size: 16px
+    font-weight: 400
+    font-family: 'Josefin Sans', sans-serif
+    color: $primColor
+    overflow-x: hidden
+
+a
+    color: $secColor
+    text-decoration: none        
+
+.container
+    height: 100vh
+    min-height: 100vh
+    display: grid
+    grid-template-columns: fr fr
+    grid-template-rows: fr fr
+    grid-template-areas: 'head img' 'text img'
+    grid-column-gap: 1rem
+    justify-items: right
+    background: Linear-gradient(135deg, hsl(0, 0%, 100%), hsl(0, 100%, 98%))
+
+
+    @media (max-width: 750px)
+        grid-template-columns: fr
+        grid-template-rows: fr fr fr
+        grid-template-areas: 'head' 'img' 'text'
+        height: auto
+        justify-items: center
+        justify-content: center   
+        
+.heading
+    grid-area: head
+    font-weight: 600
+    font-size: 1.2rem
+    text-transform: uppercase
+    letter-spacing: .5rem
+    display: flex
+    align-items: center
+    width: 100%
+    max-width: 430px
+
+    @media (max-width: 750px)
+        padding: 2rem
+        max-width: none
+
+    a
+        margin-left: .5rem
+        max-width: 150px
+
+    .circle
+        width: 30px
+        height: 30px
+        border-radius: 50%
+        border: solid 3px $primColor
+
+.text-wrap
+    grid-area: text
+
+    @media (max-width: 750px)
+        display: flex
+        flex-direction: column
+        align-items: center
+        text-align: center
+        padding: 2rem
+        width: 100%
+
+    @media (max-width: 380px)   
+        transform: scale(.85)
+        padding: 1rem
+
+    .text
+        max-width: 430px
+        line-height: 1.5rem
+        padding: 1rem 0  
+
+.main-img
+    background-image: url(../images/hero-desktop.jpg)
+    background-position: top
+    background-size: cover
+    background-repeat: no-repeat
+    grid-area: img
+    height: 100vh     
+    width: 40vw
+
+    @media (max-width: 750px)
+        background-image: url(../images/hero-mobile.jpg)
+        width: 100vw
+        height: 300px
+    
+h1
+    letter-spacing: 10px
+    font-weight: 200
+    font-size: 68px
+    text-transform: uppercase
+    span
+        font-weight: 600
+        color: $secColor
+        display: block 
+        max-width: 430px   
+
+form
+    position: relative
+    width: 100%
+    max-width: 430px  
+
+    &::after
+            content: ''
+            position: absolute
+            top: 29%
+            right: 23%
+            width: 24px
+            height: 24px
+            background-image: url('../images/icon-error.svg')   
+            background-repeat: no-repeat
+            background-size: contain 
+            transition: all ease-in-out .2s
+            z-index: 3
+            opacity: 0
+
+    p
+        opacity: 0
+        transition: all ease-in-out .2s
+
+    input
+        background: none
+        padding: 1rem 1.5rem
+        width: 100%
+        border-radius: 30px
+        border: solid 2px #d3d3d38f
+        margin: 1rem 0
+        color: $secColor
+        font-family: 'Josefin Sans', sans-serif
+        position: relative
+        transition: all ease-in-out .2s
+
+    
+        &::placeholder
+            color: $primColor
+            font-family: 'Josefin Sans', sans-serif
+
+    button
+        background: Linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%))
+        position: absolute
+        height: 55px
+        width: 20%
+        right: 0% 
+        top: 14%
+        border-radius: 30px
+        border: none
+        box-shadow: 2px 9px 16px #8282825b
+        cursor: pointer
+        transition: all ease-in-out .2s
+
+        &:hover
+            transform: scale(1.05)
+
+        &:active
+            transform: scale(.95)    
+
+    &.wrong
+        input
+            border-color: $primColorVib
+
+        &::after
+            opacity: 1
+
+        p
+            padding-left: 1.5rem
+            font-size: 12px
+            color: $primColorVib
+            text-align: left
+            opacity: 1
+
+        button
+            filter: brightness(130%)
+            cursor: unset
+            &:active, &:hover
+                transform: scale(1)
+                
+.attribution
+    width: 100%
+    text-align: center 
+    padding: .5rem
+    background: Linear-gradient(135deg, hsl(0, 80%, 86%), hsl(0, 74%, 74%))
+    color: #fff
